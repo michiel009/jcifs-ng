@@ -154,14 +154,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
+				
 				<configuration>
 					<show>public</show>
 					<excludePackageNames>jcifs.dcerpc.*:</excludePackageNames>
@@ -223,88 +216,7 @@
 				</configuration>
 			</plugin>
 
-			<plugin>
-				<groupId>org.apache.rat</groupId>
-				<artifactId>apache-rat-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>verify</phase>
-						<goals>
-							<goal>check</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<addDefaultLicenseMatchers>true</addDefaultLicenseMatchers>
-					<excludes>
-						<exclude>pom.xml</exclude>
-						<exclude>breaking-changes.xml</exclude>
-						<exclude>README.md</exclude>
-						<exclude>build.properties</exclude>
-						<exclude>src/test/resources/**</exclude>
-						<exclude>**/*.idl</exclude>
-						<exclude>**/*.css</exclude>
-						<exclude>.*</exclude>
-						<exclude>.*/**</exclude>
-						<exclude>META-INF/**</exclude>
-						<exclude>src/main/java/jcifs/dcerpc/msrpc/netdfs.java</exclude>
-						<exclude>src/main/java/jcifs/dcerpc/msrpc/srvsvc.java</exclude>
-						<exclude>src/main/java/jcifs/dcerpc/msrpc/samr.java</exclude>
-						<exclude>src/main/java/jcifs/dcerpc/msrpc/lsarpc.java</exclude>
-						<exclude>src/main/java/jcifs/dcerpc/rpc.java</exclude>
-					</excludes>
-					<licenses>
-						<license implementation="org.apache.rat.analysis.license.SimplePatternBasedLicense">
-							<licenseFamilyCategory>LGPL</licenseFamilyCategory>
-							<licenseFamilyName>GNU Lesser General Public License</licenseFamilyName>
-							<notes />
-							<patterns>
-								<pattern>This library is free software; you can redistribute it</pattern>
-								<pattern>GNU Lesser General Public License</pattern>
-							</patterns>
-						</license>
-					</licenses>
-					<licenseFamilies>
-						<licenseFamily implementation="org.apache.rat.license.SimpleLicenseFamily">
-							<familyName>GNU Lesser General Public License</familyName>
-						</licenseFamily>
-					</licenseFamilies>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<extensions>true</extensions>
-				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>false</autoReleaseAfterClose>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-release-plugin</artifactId>
-				<configuration>
-					<autoVersionSubmodules>true</autoVersionSubmodules>
-					<useReleaseProfile>false</useReleaseProfile>
-					<releaseProfiles>release</releaseProfiles>
-					<goals>deploy</goals>
-				</configuration>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-gpg-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>sign-artifacts</id>
-						<phase>verify</phase>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+		
 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
