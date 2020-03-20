@@ -521,6 +521,7 @@ final class SmbSessionImpl implements SmbSessionInternal {
         final int securityMode = ( ( negoResp.getSecurityMode() & Smb2Constants.SMB2_NEGOTIATE_SIGNING_REQUIRED ) != 0 ) || trans.isSigningEnforced()
                 ? Smb2Constants.SMB2_NEGOTIATE_SIGNING_REQUIRED : Smb2Constants.SMB2_NEGOTIATE_SIGNING_ENABLED;
         boolean anonymous = this.credentials.isAnonymous();
+        boolean guestLoginAllowed = getContext().getConfig().isGuestLoginAllowed();
         long sessId = 0;
 
         boolean preauthIntegrity = negoResp.getSelectedDialect().atLeast(DialectVersion.SMB311);
@@ -562,7 +563,7 @@ final class SmbSessionImpl implements SmbSessionInternal {
                     response = sessResponse;
                 }
 
-                if ( response.isLoggedInAsGuest() && !anonymous ) {
+                if ( response.isLoggedInAsGuest() && !anonymous && !guestLoginAllowed) {
                     throw new SmbAuthException(NtStatus.NT_STATUS_LOGON_FAILURE);
                 }
 

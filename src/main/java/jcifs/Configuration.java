@@ -764,4 +764,10 @@ public interface Configuration {
      */
     boolean isSendNTLMTargetName ();
 
+    /**
+     * Property <tt>jcifs.smb.client.GuestLoginAllowed</tt> (boolean, true)
+     * 
+     * @return whether to decline a guest session while logging in
+     */
+    boolean isGuestLoginAllowed();
 }

@@ -136,6 +136,7 @@ public class BaseConfiguration implements Configuration {
     protected DialectVersion maxVersion;
     protected boolean requireSecureNegotiate = true;
     protected boolean sendNTLMTargetName = true;
+    protected boolean guestLoginAllowed = false;
     private byte[] machineId;
 
 
@@ -820,4 +821,8 @@ public class BaseConfiguration implements Configuration {
         }
     }
 
+    @Override
+    public boolean isGuestLoginAllowed() {
+        return guestLoginAllowed;
+    }
 }

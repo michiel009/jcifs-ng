@@ -195,6 +195,11 @@
 							<differenceType>7012</differenceType>
 							<method>boolean isSendNTLMTargetName()</method>
 						</difference>
+						<difference>
+							<className>jcifs/Configuration</className>
+							<differenceType>7012</differenceType>
+							<method>boolean getGuestLoginAllowed()</method>
+						</difference>
 					</ignored>
 				</configuration>
 			</plugin>

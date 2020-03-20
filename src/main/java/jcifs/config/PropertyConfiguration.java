@@ -57,7 +57,8 @@ public final class PropertyConfiguration extends BaseConfiguration implements Co
         this.lanmanCompatibility = Config.getInt(p, "jcifs.smb.lmCompatibility", 3);
         this.allowNTLMFallback = Config.getBoolean(p, "jcifs.smb.allowNTLMFallback", true);
         this.useRawNTLM = Config.getBoolean(p, "jcifs.smb.useRawNTLM", false);
-
+        this.guestLoginAllowed = Config.getBoolean(p, "jcifs.smb.client.GuestLoginAllowed", false);
+        
         this.disableSpnegoIntegrity = Config.getBoolean(p, "jcifs.smb.client.disableSpnegoIntegrity", false);
         this.enforceSpnegoIntegrity = Config.getBoolean(p, "jcifs.smb.client.enforceSpnegoIntegrity", false);
 
@@ -140,7 +141,7 @@ public final class PropertyConfiguration extends BaseConfiguration implements Co
 
         this.traceResourceUsage = Config.getBoolean(p, "jcifs.traceResources", false);
         this.strictResourceLifecycle = Config.getBoolean(p, "jcifs.smb.client.strictResourceLifecycle", false);
-
+        
         String minVer = p.getProperty("jcifs.smb.client.minVersion");
         String maxVer = p.getProperty("jcifs.smb.client.maxVersion");
 
